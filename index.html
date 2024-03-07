@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравление с 8 Марта!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://static.toiimg.com/photo/68305232.cms');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            color: #fff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1 {
+            color: #242424;
+            font-size: 40px;
+            font-family: 'Liu Jian Mao Cao', Arial, sans-serif;
+        }
+        p {
+            color: #666;
+        }
+        #envelope {
+            position: fixed;
+            left: 50%;
+            bottom: 10px;
+            transform: translateX(-50%);
+            cursor: pointer;
+        }
+        #envelope img {
+            width: 700px;
+        }
+        .message {
+            display: none;
+            margin-top: 20px;
+        }
+        .hearts,
+        .rose-petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .heart,
+        .rose-petal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-size: cover;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+        }
+        .heart {
+            background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-03/1614566890_1-p-kartinka-serdtse-na-belom-fone-1.png');
+            animation-name: fall-rotate;
+        }
+        .rose-petal {
+            background-image: url('https://bee-garden.ru/800/600/https/maxtextures.ru/assets/images/resources/81/flowers0195-21-m.png');
+            animation-name: fall-rotate;
+        }
+
+        @keyframes fall-rotate {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>8 naýryzben quttyqtaımyz!</h1>
+        <div class="message" id="message">
+            <p>Құрметті қыздар, сіздерді 8 Наурыз көктем мерекесімен құттықтаймыз! Бұл күн сізге қуаныш, күлімсіреу және көптеген жылы сәттер әкелсін. Сізге бақыт, денсаулық және барлық бастамаларыңызға сәттілік тілейміз. Сіздің әлеміңіз жарқын түстер мен жағымды тосын сыйларға толы болсын!</p>
+            <p>Махаббат пен құрметпен,<br>Сіздің достарыңыз және USH Jazz кланы </p>
+        </div>
+    </div>
+    <div id="envelope" onclick="openEnvelope()">
+        <img src="C:\Users\Kainar\Desktop\Html sites\img\Group 4.png" alt="Envelope">
+    </div>
+
+    <div class="hearts"></div>
+    <div class="rose-petals"></div>
+
+    <script>
+    function openEnvelope() {
+        var message = document.getElementById("message");
+        var messageStyle = window.getComputedStyle(message);
+        if (messageStyle.display === "none") {
+            message.style.display = "block";
+            createRosePetals();
+        }
+    }
+
+    function createRosePetals() {
+        var rosePetalsContainer = document.querySelector('.rose-petals');
+        for (var i = 0; i < 100; i++) { // Увеличил количество лепестков до 100
+            var rosePetal = document.createElement('div');
+            rosePetal.classList.add('rose-petal');
+            rosePetal.style.left = Math.random() * window.innerWidth + 'px';
+            rosePetal.style.top = Math.random() * window.innerHeight + 'px';
+            rosePetalsContainer.appendChild(rosePetal);
+        }
+    }
+    </script>
+</body>
+</html>
